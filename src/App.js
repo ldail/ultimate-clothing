@@ -2,6 +2,10 @@
 import React, {useEffect, useState} from 'react';
 import {Route, Switch} from 'react-router-dom';
 
+//Redux
+import {connect} from 'react-redux';
+import {signIn} from './redux/user/user-actions'
+
 //Components & Pages
 import Header from './components/Header/Header';
 import ShopMain from './pages/ShopMain';
@@ -9,19 +13,26 @@ import Footer from './components/Footer/Footer';
 import CollectionPage from './pages/CollectionPage';
 import ShopCollectionsPage from './pages/ShopCollectionsPage';
 import SignIn from './pages/SignIn';
-import {auth} from './firebase/firebase.utils'
+import {auth, createUserProfileDocument} from './firebase/firebase.utils'
 
 
-function App() {
-
-  const [user, setUser] = useState(null)
+function App({setUser}) {
 
   let unsubscribeFromAuth = null;
 
   useEffect(() => {
-    unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-      setUser(user);
-      console.log(user);
+    unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+
+      if (userAuth) {
+      const userRef = await createUserProfileDocument(userAuth);
+
+      userRef.onSnapshot(snapshot => {
+        setUser({
+          id: snapshot.id,
+          ...snapshot.data()
+        });
+      });
+    }
     })
 
     return () => {
@@ -43,4 +54,8 @@ function App() {
   );
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  setUser: (user) => dispatch(signIn(user))
+})
+
+export default connect(null, mapDispatchToProps)(App);
