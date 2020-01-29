@@ -23,6 +23,10 @@ const ShopMain = () => {
           <div className="shopHats">
             <button className="shopInverted">SHOP HATS</button>
           </div>
+
+          <div className="shopJackets">
+            <button className="shopInverted">SHOP JACKETS</button>
+          </div>
         </section>
       </main>
   );
