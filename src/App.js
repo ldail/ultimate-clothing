@@ -17,9 +17,10 @@ import {auth, createUserProfileDocument, firestore} from './firebase/firebase.ut
 import { addItems } from './redux/collections/collections-actions';
 import Checkout from './pages/Checkout';
 import Dropdown from './components/Dropdown/Dropdown';
+import Sidebar from './components/Sidebar/Sidebar';
 
 
-function App({setUser, addItems}) {
+function App({setUser, addItems, sidebarHidden}) {
 
   let unsubscribeFromAuth = null;
   let unsubscribeFromCollections = null;
@@ -58,6 +59,7 @@ function App({setUser, addItems}) {
 
   return (
     <div className="App">
+      {sidebarHidden === true ? '' : <Sidebar />}
       <Header />
       <Switch>
         <Route exact path="/" component={ShopMain} />
@@ -72,9 +74,12 @@ function App({setUser, addItems}) {
   );
 }
 
+const mapStateToProps = state => ({
+  sidebarHidden: state.navigation.hidden
+})
 const mapDispatchToProps = dispatch => ({
   setUser: (user) => dispatch(signIn(user)),
   addItems: (items) => dispatch(addItems(items))
 })
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

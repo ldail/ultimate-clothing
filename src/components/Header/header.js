@@ -1,10 +1,12 @@
 import React from 'react';
+import {sidebarHiddenToggle} from '../../redux/navigation/navigation-actions'
+import {connect} from 'react-redux';
 
-const Header = () => {
+const Header = ({sidebarHiddenToggle}) => {
   return (
       <header>
         <div className="promoBar">
-          <div className="hamburger">=</div>
+          <button type="button" className="hamburger" onClick={() => sidebarHiddenToggle()}>=</button>
           <p>Free shipping on orders over $70 at checkout</p>
         </div>
 
@@ -22,4 +24,8 @@ const Header = () => {
   );
 };
 
-export default Header;
+const mapDispatchToProps = dispatch => ({
+  sidebarHiddenToggle: () => dispatch(sidebarHiddenToggle())
+})
+
+export default connect(null,mapDispatchToProps)(Header);
