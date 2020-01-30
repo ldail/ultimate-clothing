@@ -13,12 +13,14 @@ import Footer from './components/Footer/Footer';
 import CollectionPage from './pages/CollectionPage';
 import ShopCollectionsPage from './pages/ShopCollectionsPage';
 import SignIn from './pages/SignIn';
-import {auth, createUserProfileDocument} from './firebase/firebase.utils'
+import {auth, createUserProfileDocument, firestore} from './firebase/firebase.utils'
+import { addItems } from './redux/collections/collections-actions';
 
 
-function App({setUser}) {
+function App({setUser, addItems}) {
 
   let unsubscribeFromAuth = null;
+  let unsubscribeFromCollections = null;
 
   useEffect(() => {
     unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
@@ -35,8 +37,20 @@ function App({setUser}) {
     }
     })
 
+    const collectionRef = firestore.collection('collections');
+    unsubscribeFromCollections = collectionRef.onSnapshot(snapshot => {
+      let collectionNames = snapshot.docs;
+      let mappedCollectionData = [];
+      collectionNames.forEach(doc => {
+        mappedCollectionData.push(doc.data());
+      });
+
+      addItems(mappedCollectionData)
+    })
+
     return () => {
       unsubscribeFromAuth();
+      unsubscribeFromCollections();
     }
   }, []);
 
@@ -55,7 +69,8 @@ function App({setUser}) {
 }
 
 const mapDispatchToProps = dispatch => ({
-  setUser: (user) => dispatch(signIn(user))
+  setUser: (user) => dispatch(signIn(user)),
+  addItems: (items) => dispatch(addItems(items))
 })
 
 export default connect(null, mapDispatchToProps)(App);
