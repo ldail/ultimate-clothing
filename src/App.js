@@ -15,6 +15,8 @@ import ShopCollectionsPage from './pages/ShopCollectionsPage';
 import SignIn from './pages/SignIn';
 import {auth, createUserProfileDocument, firestore} from './firebase/firebase.utils'
 import { addItems } from './redux/collections/collections-actions';
+import Checkout from './pages/Checkout';
+import Dropdown from './components/Dropdown/Dropdown';
 
 
 function App({setUser, addItems}) {
@@ -62,8 +64,10 @@ function App({setUser, addItems}) {
         <Route exact path="/shop" component={ShopCollectionsPage} />
         <Route path="/shop/:id" component={CollectionPage} />
         <Route path="/signin" component={SignIn} />
+        <Route path="/checkout" component={Checkout} />
       </Switch>
       <Footer />
+      <Dropdown />
     </div>
   );
 }
