@@ -1,12 +1,12 @@
 import React from 'react';
 
-const ShopItem = () => {
+const ShopItem = ({collectionTitle, collectionInfo: {id, imageUrl, name, price}}) => {
   return (
     <li className="ShopItem">
-      <img src="#" className="shopItemImage" alt="hat" />
+      <img src={imageUrl} className="shopItemImage" alt={collectionTitle} />
       <button className="shopInverted">Add to cart</button>
-      <p>Blue Beanie</p>
-      <span>$35</span>
+      <p>{name}</p>
+      <span>${price}</span>
     </li>
   );
 };

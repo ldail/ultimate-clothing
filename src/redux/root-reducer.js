@@ -4,6 +4,6 @@ import userReducer from "./user/user-reducer";
 import collectionsReducer from "./collections/collections-reducer";
 
 
-const rootReducer = combineReducers({cart: cartReducer, user: userReducer, collection: collectionsReducer})
+const rootReducer = combineReducers({cart: cartReducer, user: userReducer, collections: collectionsReducer})
 
 export default rootReducer;
