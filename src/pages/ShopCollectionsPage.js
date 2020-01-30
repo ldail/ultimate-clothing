@@ -1,23 +1,24 @@
 import React from 'react';
 import ShopItem from '../components/ShopItem/ShopItem';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 const ShopCollectionsPage = ({collections}) => {
 
   const displayItemsWithLimit = (collection, limit) => {
     let displayItems = [];
     for (let i=0; i<limit;i++) {
-      displayItems.push(<ShopItem collectionTitle={collection.title} collectionInfo={collection.items[i]} />);
+      displayItems.push(<ShopItem key={i} collectionTitle={collection.title} collectionInfo={collection.items[i]} />);
     }
     return displayItems;
   }
-  console.log(collections);
+
   return (
     <main id="ShopCollectionsPage">
       {collections.map(collection => {
         return (
         <>
-          <h2>{collection.title.toUpperCase()}</h2>
+          <h2><Link to={`/shop/${collection.title.toLowerCase()}`}>{collection.title.toUpperCase()}</Link></h2>
           <ul className="collectionItems">
             {displayItemsWithLimit(collection, 4)}
             }
