@@ -16,6 +16,6 @@ export const increaseQuantity = (item) => ({
 });
 
 export const decreaseQuantity = (item) => ({
-  type: cartTypes.UPDATE_QUANTITY,
+  type: cartTypes.DECREASE_QUANTITY,
   payload: item
 });
