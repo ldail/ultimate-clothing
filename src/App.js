@@ -20,7 +20,7 @@ import Dropdown from './components/Dropdown/Dropdown';
 import Sidebar from './components/Sidebar/Sidebar';
 
 
-function App({setUser, addItems, sidebarHidden}) {
+function App({setUser, addItems, sidebarHidden, dropdownHidden}) {
 
   let unsubscribeFromAuth = null;
   let unsubscribeFromCollections = null;
@@ -60,6 +60,7 @@ function App({setUser, addItems, sidebarHidden}) {
   return (
     <div className="App">
       {sidebarHidden === true ? '' : <Sidebar />}
+      {dropdownHidden === true ? '' : <Dropdown />}
       <Header />
       <Switch>
         <Route exact path="/" component={ShopMain} />
@@ -69,13 +70,13 @@ function App({setUser, addItems, sidebarHidden}) {
         <Route path="/checkout" component={Checkout} />
       </Switch>
       <Footer />
-      <Dropdown />
     </div>
   );
 }
 
 const mapStateToProps = state => ({
-  sidebarHidden: state.navigation.hidden
+  sidebarHidden: state.navigation.sidebarHidden,
+  dropdownHidden: state.navigation.dropdownHidden
 })
 const mapDispatchToProps = dispatch => ({
   setUser: (user) => dispatch(signIn(user)),

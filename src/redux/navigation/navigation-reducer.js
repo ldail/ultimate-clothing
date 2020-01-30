@@ -1,7 +1,8 @@
 import navigationTypes from "./navigation-types"
 
 const INITIAL_STATE = {
-  hidden: true
+  sidebarHidden: true,
+  dropdownHidden: true
 }
 
 const navigationReducer = (state=INITIAL_STATE,action) => {
@@ -9,7 +10,12 @@ const navigationReducer = (state=INITIAL_STATE,action) => {
     case navigationTypes.SIDEBAR_HIDDEN:
       return {
         ...state,
-        hidden: !state.hidden
+        sidebarHidden: !state.sidebarHidden
+        }
+    case navigationTypes.DROPDOWN_HIDDEN:
+      return {
+        ...state,
+        dropdownHidden: !state.dropdownHidden
         }
     default:
       return state;

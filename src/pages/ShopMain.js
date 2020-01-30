@@ -1,14 +1,15 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 
-const ShopMain = () => {
+const ShopMain = ({history}) => {
   return (
       <main id="ShopMain">
         <section className="sellPromos">
           <div className="shopWomens">
-            <button className="shop">SHOP WOMEN'S</button>
+            <button className="shop" onClick={() => history.push('/shop/womens')}>SHOP WOMEN'S</button>
           </div>
           <div className="shopMens">
-            <button className="shop">SHOP MEN'S</button>
+            <button className="shop" onClick={() => history.push('/shop/mens')}>SHOP MEN'S</button>
           </div>
         </section>
 
@@ -17,19 +18,19 @@ const ShopMain = () => {
           <h3>made by world-class designers</h3>
 
           <div className="shopSneakers">
-            <button className="shopInverted">SHOP SNEAKERS</button>
+            <button className="shopInverted" onClick={() => history.push('/shop/sneakers')}>SHOP SNEAKERS</button>
           </div>
 
           <div className="shopHats">
-            <button className="shopInverted">SHOP HATS</button>
+            <button className="shopInverted" onClick={() => history.push('/shop/hats')}>SHOP HATS</button>
           </div>
 
           <div className="shopJackets">
-            <button className="shopInverted">SHOP JACKETS</button>
+            <button className="shopInverted" onClick={() => history.push('/shop/jackets')}>SHOP JACKETS</button>
           </div>
         </section>
       </main>
   );
 };
 
-export default ShopMain;
+export default withRouter(ShopMain);
