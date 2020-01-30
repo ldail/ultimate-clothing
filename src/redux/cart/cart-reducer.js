@@ -9,7 +9,7 @@ const cartReducer = (state=INITIAL_STATE,action) => {
   switch(action.type) {
     case cartTypes.ADD_ITEM:
     case cartTypes.INCREASE_QUANTITY:
-      return increaseQuantity(action.payload);
+      return increaseQuantity(state, action.payload);
     case cartTypes.REMOVE_ITEM:
       return removeItem(state, action.payload);
     case cartTypes.DECREASE_QUANTITY:

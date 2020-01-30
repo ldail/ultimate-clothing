@@ -1,28 +1,44 @@
 export const increaseQuantity = (state, addItem) => {
-  let newState = [...state];
-  let find = newState.find(item => item.id === addItem.id)
+  let cartItems = [...state.cartItems];
+  let find = cartItems.find(item => item.id === addItem.id);
   if (find) {
     find.quantity++;
-    return newState;
+    return {
+      ...state,
+      cartItems
+    }
   }
   else {
-    return [...newState, addItem]
+    addItem.quantity = 1;
+    return {
+      ...state,
+      cartItems: [...cartItems, addItem]
+    }
   }
 }
 
 export const decreaseQuantity = (state, decreaseItem) => {
-  let newState = [...state];
-  let find = newState.find(item => item.id === decreaseItem.id);
+  let cartItems = [...state.cartItems];
+  let find = cartItems.find(item => item.id === decreaseItem.id);
   if (find.quantity === 1) {
-    return newState.filter(item => item.id !== decreaseItem.id)
+    return {
+      ...state,
+      cartItems: cartItems.filter(item => item.id !== decreaseItem.id)
+    }
   }
   else {
     find.quantity--;
-    return newState;
+    return {
+      ...state,
+      cartItems
+    }
   }
 }
 
 export const removeItem = (state, removeItem) => {
-  let newState = [...state];
-  return newState.filter(item => item.id !== removeItem.id);
+  let cartItems = [...state.cartItems];
+  return {
+    ...state,
+    cartItems: cartItems.filter(item => item.id !== removeItem.id)
+  }
 }
