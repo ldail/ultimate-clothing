@@ -11,3 +11,13 @@
   font-size: 36px;
   margin-bottom: 10px;
 }
+
+#CollectionPage ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+#CollectionPage li {
+  margin: 15px;
+}

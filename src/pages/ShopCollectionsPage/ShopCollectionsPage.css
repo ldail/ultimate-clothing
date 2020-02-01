@@ -11,3 +11,22 @@
   font-size: 36px;
   margin-bottom: 10px;
 }
+
+#ShopCollectionsPage ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+#ShopCollectionsPage li {
+  margin: 5px;
+  width: 20vw;
+
+}
+
+@media screen and (min-width: 768px) {
+  #ShopCollectionsPage li {
+    margin: 15px;
+    width: 20vw;
+  }
+}

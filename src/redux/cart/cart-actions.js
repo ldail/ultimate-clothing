@@ -19,3 +19,11 @@ export const decreaseQuantity = (item) => ({
   type: cartTypes.DECREASE_QUANTITY,
   payload: item
 });
+
+export const getTotal = () => ({
+  type: cartTypes.GET_TOTAL
+})
+
+export const getItemCount = () => ({
+  type: cartTypes.GET_ITEM_COUNT
+})

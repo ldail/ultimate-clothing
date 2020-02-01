@@ -2,7 +2,8 @@ import {increaseQuantity, decreaseQuantity, removeItem} from './cart-utils'
 import cartTypes from './cart-types';
 
 const INITIAL_STATE = {
-  cartItems: []
+  cartItems: [],
+  total: 0
 }
 
 const cartReducer = (state=INITIAL_STATE,action) => {
