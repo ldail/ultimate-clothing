@@ -7,6 +7,7 @@ import './ShopMain.css';
 const ShopMain = ({history}) => {
   return (
       <main id="ShopMain">
+        <div className="divider" />
         <section className="sellPromos">
           <div className="shopHighlight shopWomens">
             <div className="mobile-hidden">

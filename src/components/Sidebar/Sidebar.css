@@ -1,5 +1,5 @@
 #Sidebar {
-  z-index: 1;
+  z-index: 4;
   position: fixed;
   background-color: #202020;
   top: 0;
@@ -7,44 +7,69 @@
   color: white;
   height: 100vh;
   font-size: 30px;
-  padding-top: 40px;
+  margin-top: 30px;
+  padding-top: 15px;
   width: 200px;
-  opacity: 0;
+  left: -200px;
+}
+
+#Sidebar li:hover {
+  cursor: pointer;
 }
 
 .shownSidebar {
   animation: forwards;
+  -webkit-animation: forwards;
   animation-name: 'slideInSidebar';
+  -webkit-animation-name: 'slideInSidebar';
   animation-duration: .3s;
-  animation-play-state: inherit;
+  -webkit-animation-duration: .3s;
+  /* animation-play-state: inherit; */
 }
 
 .hiddenSidebar {
   animation: forwards;
+  -webkit-animation: forwards;
   animation-name: 'slideOutSidebar';
+  -webkit-animation-name: 'slideOutSidebar';
   animation-duration: .3s;
-  animation-play-state: inherit;
+  -webkit-animation-duration: .3s;
+  /* animation-play-state: inherit; */
 }
 
 @keyframes slideInSidebar {
   from {
-    width: 0px;
-    opacity: 0;
+    left: -200px
   }
   to {
-    width: 200px;
-    opacity: 1.0;
+    left: 0px;
+  }
+}
+
+@-webkit-keyframes slideInSidebar {
+  from {
+    left: -200px
+  }
+  to {
+    left: 0px;
   }
 }
 
 @keyframes slideOutSidebar {
   from {
-    width: 200px;
-    opacity: 1.0;
+    left: 0px
   }
   to {
-    width: 0px;
-    opacity: 0;
+    left: -200px;
+  }
+}
+
+@-webkit-keyframes slideOutSidebar {
+  from {
+    left: 0px
+  }
+  to {
+    left: -200px;
   }
 }
 
