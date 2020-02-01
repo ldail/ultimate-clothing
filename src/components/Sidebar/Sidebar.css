@@ -9,6 +9,7 @@
   font-size: 30px;
   padding-top: 40px;
   width: 200px;
+  opacity: 0;
 }
 
 .shownSidebar {
@@ -28,18 +29,22 @@
 @keyframes slideInSidebar {
   from {
     width: 0px;
+    opacity: 0;
   }
   to {
     width: 200px;
+    opacity: 1.0;
   }
 }
 
 @keyframes slideOutSidebar {
   from {
     width: 200px;
+    opacity: 1.0;
   }
   to {
     width: 0px;
+    opacity: 0;
   }
 }
 

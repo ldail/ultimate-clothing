@@ -4,9 +4,10 @@ import {dropdownHiddenToggle} from '../../redux/navigation/navigation-actions'
 import {Link} from 'react-router-dom';
 import './Sidebar.css';
 
-const Sidebar = ({user, sideBarHidden, dropdownHiddenToggle}) => {
+const Sidebar = ({user, sidebarHidden, dropdownHiddenToggle}) => {
+  console.log(sidebarHidden);
   return (
-    <ul id="Sidebar" className={sideBarHidden ? 'hiddenSidebar' : 'shownSidebar'}>
+    <ul id="Sidebar" className={sidebarHidden ? 'hiddenSidebar' : 'shownSidebar'}>
       <li>{user ? 'SIGN OUT' : 'SIGN IN'}</li>
       <li onClick={() => dropdownHiddenToggle()}>CART</li>
       <li className="break"><Link to="/shop">SHOP</Link></li>

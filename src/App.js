@@ -62,7 +62,7 @@ function App({setUser, addItems, sidebarHidden, dropdownHidden}) {
 
   return (
     <div className="App">
-      {sidebarHidden === true ? '' : <Sidebar />}
+      <Sidebar />
       {dropdownHidden === true ? '' : <Dropdown />}
       <Header />
       <Switch>
