@@ -2,10 +2,11 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {dropdownHiddenToggle} from '../../redux/navigation/navigation-actions'
 import {Link} from 'react-router-dom';
+import './Sidebar.css';
 
-const Sidebar = ({user, dropdownHiddenToggle}) => {
+const Sidebar = ({user, sideBarHidden, dropdownHiddenToggle}) => {
   return (
-    <ul>
+    <ul id="Sidebar" className={sideBarHidden ? 'hiddenSidebar' : 'shownSidebar'}>
       <li>{user ? 'SIGN OUT' : 'SIGN IN'}</li>
       <li onClick={() => dropdownHiddenToggle()}>CART</li>
       <li className="break"><Link to="/shop">SHOP</Link></li>
@@ -19,7 +20,8 @@ const Sidebar = ({user, dropdownHiddenToggle}) => {
 };
 
 const mapStateToProps = (state) => ({
-  user: state.user
+  user: state.user,
+  sidebarHidden: state.navigation.sidebarHidden
 })
 
 const mapDispatchToProps = (dispatch) => ({

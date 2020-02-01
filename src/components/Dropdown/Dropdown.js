@@ -2,10 +2,11 @@ import React from 'react';
 import ShopItemMinimized from '../ShopItemMinimized/ShopItemMinimized';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import './Dropdown.css';
 
 const Dropdown = ({cartItems}) => {
   return (
-    <div>
+    <div id="Dropdown">
       <div className="cart">
         {cartItems.map((item,index)=> {
           return <ShopItemMinimized key={index} collectionInfo={item} />
