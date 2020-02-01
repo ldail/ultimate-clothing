@@ -28,3 +28,15 @@
   font-size: 18px;
   font-weight: 200;
 }
+
+@media screen and (min-width: 768px) {
+  #Footer {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  #Footer .tablet-flex {
+    display: flex;
+    flex-direction: column;
+  }
+}

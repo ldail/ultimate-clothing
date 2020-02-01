@@ -1,5 +1,5 @@
 import React from 'react';
-import ShopItem from '../components/ShopItem/ShopItem';
+import ShopItem from '../../components/ShopItem/ShopItem';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 

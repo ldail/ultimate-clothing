@@ -11,7 +11,7 @@ import Header from './components/Header/Header';
 import ShopMain from './pages/ShopMain/ShopMain';
 import Footer from './components/Footer/Footer';
 import CollectionPage from './pages/CollectionPage';
-import ShopCollectionsPage from './pages/ShopCollectionsPage';
+import ShopCollectionsPage from './pages/ShopCollectionsPage/ShopCollectionsPage';
 import SignIn from './pages/SignIn';
 import {auth, createUserProfileDocument, firestore} from './firebase/firebase.utils'
 import { addItems } from './redux/collections/collections-actions';
