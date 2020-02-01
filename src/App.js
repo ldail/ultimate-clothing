@@ -8,7 +8,7 @@ import {signIn} from './redux/user/user-actions'
 
 //Components & Pages
 import Header from './components/Header/Header';
-import ShopMain from './pages/ShopMain';
+import ShopMain from './pages/ShopMain/ShopMain';
 import Footer from './components/Footer/Footer';
 import CollectionPage from './pages/CollectionPage';
 import ShopCollectionsPage from './pages/ShopCollectionsPage';
@@ -18,6 +18,9 @@ import { addItems } from './redux/collections/collections-actions';
 import Checkout from './pages/Checkout';
 import Dropdown from './components/Dropdown/Dropdown';
 import Sidebar from './components/Sidebar/Sidebar';
+
+//Styling
+import './App.css';
 
 
 function App({setUser, addItems, sidebarHidden, dropdownHidden}) {

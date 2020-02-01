@@ -1,0 +1,30 @@
+#Footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+#Footer a {
+  color: white;
+}
+
+#Footer a:hover {
+  color: #d4d622;
+}
+
+#Footer h3 {
+  font-size: 25px;
+}
+
+#Footer h3:first-of-type {
+  padding-top: 10px;
+}
+
+#Footer h3:not(first-of-type) {
+  margin-top: 20px;
+}
+
+#Footer li {
+  font-size: 18px;
+  font-weight: 200;
+}

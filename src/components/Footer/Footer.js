@@ -2,10 +2,11 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {dropdownHiddenToggle} from '../../redux/navigation/navigation-actions';
 import {connect} from 'react-redux';
+import './Footer.css';
 
 const Footer = ({user, dropdownHiddenToggle}) => {
   return (
-      <footer>
+      <footer id="Footer">
         <h3>STORE</h3>
         <ul className="footerNav">
           <li><Link to="/shop/mens">MEN</Link></li>

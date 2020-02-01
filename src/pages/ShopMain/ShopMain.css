@@ -1,0 +1,198 @@
+#ShopMain {
+  background-color: black;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+.shopHighlight {
+  min-height: 300px;
+  position: relative;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.shopWomens {
+  background: url('../../assets/womens-background.png') no-repeat;
+  background-position: left -400px top;
+}
+
+.shopMens {
+  background: url('../../assets/mens-background.png') no-repeat;
+  background-position: top right -500px;
+}
+
+.shopHighlight button {
+  position: absolute;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.shopWomens button {
+  right: 30px;
+  top: 120px;
+}
+
+.shopMens button {
+  left: 30px;
+  top: 120px;
+}
+
+.shopHighlight button:hover {
+  background-color: black;
+  border: 2px solid white;
+  color: white;
+}
+
+.sellPrimary {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sellPrimary h2 {
+  font-family: 'Josefin Slab', serif;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+.sellPrimary h3 {
+  font-family: 'Tangerine', serif;
+  font-weight: 100;
+  font-size: 30px;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.sellPrimary .shopFeature {
+  background-position: top center;
+  width: 260px;
+  margin-bottom: 20px;
+}
+
+.shopFeature.jackets {
+  background: url('/images/shop-img/jackets/grey-jean-jacket.png') no-repeat;
+}
+
+.shopFeature.sneakers {
+  background: url('/images/shop-img/sneakers/white-nike-high-tops.png') no-repeat;
+}
+
+.shopFeature.hats {
+  background: url('/images/shop-img/hats/green-beanie.png') no-repeat;
+}
+
+.shopFeature {
+  height: 300px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: flex-end;
+}
+
+.shopFeature button {
+  width: 150px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.shopFeature button:hover {
+  background-color: white;
+  border: 2px solid black;
+  color: black;
+}
+
+@media screen and (min-width: 468px) {
+  .shopWomens {
+    background-position: left -333px top;
+  }
+
+  .shopMens {
+    background-position: top right -420px;
+  }
+
+  .shopHighlight button {
+    font-size: 30px;
+  }
+
+  .shopWomens button {
+    right: 80px;
+  }
+
+  .shopMens button {
+    left: 60px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .shopHighlight {
+    height: 545px;
+    background-position: left -200px top;
+  }
+
+  .shopHighlight button {
+    top: 280px;
+    font-size: 30px;
+  }
+
+  .shopHighlight .mobile-hidden {
+    display: block;
+    position: absolute;
+    font-weight: bold;
+    font-size: 80px;
+    line-height: 1;
+  }
+
+  .shopWomens .mobile-hidden {
+    top: 100px;
+    right: 100px;
+    text-align: right;
+  }
+
+  .shopMens .mobile-hidden {
+    top: 100px;
+    left: 60px;
+    text-align: left;
+  }
+
+  .shopWomens .mobile-hidden .highlight {
+    color: #f46034;
+  }
+
+  .shopMens .mobile-hidden .highlight {
+    color: #f4d8cc;
+  }
+
+  .shopHighlight .mobile-hidden .under-highlight {
+    color: white;
+  }
+
+  .tablet-flex {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 1259px) {
+  .shopHighlight {
+    background-position: left top;
+  }
+
+  .shopHighlight .mobile-hidden {
+    right: 150px;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .shopHighlight {
+    width: 1500px;
+    overflow-x: hidden;
+  }
+}

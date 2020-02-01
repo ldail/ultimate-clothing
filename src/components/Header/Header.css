@@ -1,0 +1,67 @@
+#Header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.promoBar {
+  background-color: #202020;
+  color: white;
+  font-weight: 300;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 3px;
+  height: 30px;
+  z-index: 2;
+}
+
+.hamburger {
+  color: white;
+  position: fixed;
+  top: 2px;
+  left: 2px;
+}
+
+.hamburger:hover {
+  color: #c7d61d;
+  fill: #c7d61d;
+  cursor: pointer;
+}
+
+.promoBar p {
+  align-self: center;
+}
+
+h1 {
+  padding-top: 40px;
+  font-size: 80px;
+  color: black;
+  text-align: center;
+  text-shadow: 0px 0px 10px #606060;
+  line-height: 1.2;
+}
+
+h1:hover {
+  text-shadow: 0px 0px 10px #202020;
+  transition: 0.3s;
+}
+
+#Header .flex {
+  text-align: center;
+  justify-content: center;
+}
+#Header .flex li {
+  margin: 0px 20px;
+  font-size: 21px;
+  line-height: 1.2;
+}
+
+#Header .flex li:hover {
+  text-shadow: 0px 0px 10px #808080;
+  transition: 0.3s;
+}
