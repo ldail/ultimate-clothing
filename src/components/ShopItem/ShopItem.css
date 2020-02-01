@@ -1,0 +1,29 @@
+.ShopItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.ShopItem button {
+  position: absolute;
+  bottom: 50px;
+  width: 200px;
+  height: 40px;
+  margin: 0 auto;
+}
+
+.ShopItem button:hover {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+}
+
+.ShopItem .flex {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

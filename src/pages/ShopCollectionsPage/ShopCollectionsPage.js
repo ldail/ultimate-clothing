@@ -2,6 +2,7 @@ import React from 'react';
 import ShopItem from '../../components/ShopItem/ShopItem';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import './ShopCollectionsPage.css';
 
 const ShopCollectionsPage = ({collections}) => {
 
@@ -15,12 +16,13 @@ const ShopCollectionsPage = ({collections}) => {
 
   return (
     <main id="ShopCollectionsPage">
+      <div className="divider" />
       {collections.map(collection => {
         return (
         <>
           <h2><Link to={`/shop/${collection.title.toLowerCase()}`}>{collection.title.toUpperCase()}</Link></h2>
           <ul className="collectionItems">
-            {displayItemsWithLimit(collection, 4)}
+            {displayItemsWithLimit(collection, 4)
             }
           </ul>
         </>);

@@ -46,3 +46,9 @@ button.shop:hover, button.shopInverted:hover {
 .break {
   margin-top: 15px;
 }
+
+.divider {
+  width: 100%;
+  height: 15px;
+  background-color: black
+}
