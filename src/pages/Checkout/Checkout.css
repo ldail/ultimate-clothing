@@ -1,0 +1,44 @@
+#Checkout {
+  text-align: center;
+}
+
+#Checkout ul {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+#Checkout li {
+  text-align: center;
+  flex: 1;
+}
+
+#Checkout h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+#Checkout .StripeCheckout {
+  margin-bottom: 15px;
+}
+
+#Checkout .items {
+  flex-direction: column;
+}
+
+#Checkout img {
+  width: 50px;
+}
+
+#Checkout .total {
+  display: block;
+  margin-bottom: 15px;
+}
+
+#Checkout .devMessage {
+  color: red;
+  margin-bottom: 15px;
+}

@@ -54,11 +54,15 @@ button.shop:hover, button.shopInverted:hover {
 }
 
 main {
-  padding-top: 200px;
+  padding-top: 205px;
 }
 
 @media screen and (min-width: 768px) {
   .tablet-hidden {
     display: none;
+  }
+
+  main {
+    padding-top: 180px;
   }
 }

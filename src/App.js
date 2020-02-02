@@ -15,7 +15,7 @@ import ShopCollectionsPage from './pages/ShopCollectionsPage/ShopCollectionsPage
 import SignIn from './pages/SignIn';
 import {auth, createUserProfileDocument, firestore} from './firebase/firebase.utils'
 import { addItems } from './redux/collections/collections-actions';
-import Checkout from './pages/Checkout';
+import Checkout from './pages/Checkout/Checkout';
 import Dropdown from './components/Dropdown/Dropdown';
 import Sidebar from './components/Sidebar/Sidebar';
 

@@ -1,10 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {dropdownHiddenToggle} from '../../redux/navigation/navigation-actions';
 import {connect} from 'react-redux';
 import './Footer.css';
 
-const Footer = ({user, dropdownHiddenToggle}) => {
+const Footer = ({user}) => {
   return (
       <footer id="Footer">
         <div className="tablet-flex">
@@ -17,7 +16,6 @@ const Footer = ({user, dropdownHiddenToggle}) => {
             <li><Link to="/shop/hats">HATS</Link></li>
           
             <li className="break"><Link to="/shop">SHOP</Link></li>
-            <li onClick={() => dropdownHiddenToggle()}>CART</li>
           </ul>
         </div>
 
@@ -59,8 +57,4 @@ const mapStateToProps = (state) => ({
   user: state.user
 })
 
-const mapDispatchToProps = (dispatch) => ({
-  dropdownHiddenToggle: () => dispatch(dropdownHiddenToggle())
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Footer);
+export default connect(mapStateToProps, null)(Footer);

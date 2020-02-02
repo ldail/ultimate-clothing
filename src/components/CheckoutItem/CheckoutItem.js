@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { increaseQuantity, decreaseQuantity, removeItem } from '../../redux/cart/cart-actions';
 import {connect} from 'react-redux';
+import './CheckoutItem.css';
 
 const CheckoutItem = ({itemInfo, increaseQuantity, decreaseQuantity, removeItem}) => {
   let {imageUrl, name, quantity, price, id} = itemInfo;
   let [finalQuantity, setFinalQuantity] = useState(quantity);
-  console.log(itemInfo);
 
   return (
-    <li>
+    <li className="CheckoutItem">
       <img src={imageUrl} alt="cart item" />
       <div className="quantityChanger">
-        <button className="leftArrow" onClick={() => {
+        <button className="leftArrow interactive" onClick={() => {
           setFinalQuantity(finalQuantity -1);
           decreaseQuantity(itemInfo)}
           }>&#10094;</button>
         <span className="quantity">{finalQuantity}</span>
-        <button className="rightArrow" onClick={() => {
+        <button className="rightArrow interactive" onClick={() => {
           setFinalQuantity(finalQuantity + 1);
           increaseQuantity(itemInfo)
           }}>&#10095;</button>
       </div>
       <span className="price">{price}</span>
-      <span className="removeButton" onClick={() => removeItem(itemInfo)}>&#10005;</span>
+      <span className="removeButton interactive" onClick={() => removeItem(itemInfo)}>&#10005;</span>
     </li>
   );
 };

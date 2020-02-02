@@ -7,3 +7,7 @@ export const sidebarHiddenToggle = () => ({
 export const dropdownHiddenToggle = () => ({
   type: navigationTypes.DROPDOWN_HIDDEN
 })
+
+export const hideDropdownAndSidebar =() => ({
+  type: navigationTypes.HIDE_DROPDOWN_AND_SIDEBAR
+})

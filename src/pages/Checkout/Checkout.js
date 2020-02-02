@@ -1,9 +1,10 @@
 import React from 'react';
-import CheckoutItem from '../components/CheckoutItem/CheckoutItem';
+import CheckoutItem from '../../components/CheckoutItem/CheckoutItem';
 import {connect} from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { selectCartItems } from '../redux/cart/cart-selector';
-import StripButtonCheckout from '../components/StripeButtonCheckout/StripeButtonCheckout';
+import { selectCartItems } from '../../redux/cart/cart-selector';
+import StripButtonCheckout from '../../components/StripeButtonCheckout/StripeButtonCheckout';
+import './Checkout.css';
 
 const Checkout = ({cartItems}) => {
 
@@ -13,9 +14,11 @@ const Checkout = ({cartItems}) => {
   })
   return (
     <main id="Checkout">
+      <div className="divider" />
+      <h2>CHECKOUT</h2>
       <ul className="columns">
         <li>Product</li>
-        <li>Description</li>
+        <li className="mobile-hidden">Description</li>
         <li>Quantity</li>
         <li>Price</li>
         <li>Remove</li>
@@ -28,9 +31,9 @@ const Checkout = ({cartItems}) => {
         }
       </ul>
       <span className="total">${total}</span>
-      <p>*Please use the following test credit card for payments*</p>
+      <p className="devMessage">*Please use the following test credit card for payments*</p>
 
-      <p>4242 4242 4242 4242 - exp: 02/20 - CVV: 123</p>
+      <p className="devMessage">4242 4242 4242 4242 - exp: 02/20 - CVV: 123</p>
       <StripButtonCheckout price={total}/>
     </main>
   );

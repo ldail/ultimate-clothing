@@ -22,6 +22,12 @@ const navigationReducer = (state=INITIAL_STATE,action) => {
         ...state,
         dropdownHidden: !state.dropdownHidden
         }
+      case navigationTypes.HIDE_DROPDOWN_AND_SIDEBAR:
+        return {
+          ...state,
+          dropdownHidden: true,
+          sidebarHidden: true
+        }
     default:
       return state;
   }

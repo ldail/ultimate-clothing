@@ -1,0 +1,15 @@
+.CheckoutItem {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+  align-content: center;
+  align-items: center;
+}
+
+.CheckoutItem > * {
+  flex: 1;
+}
+
+.CheckoutItem .interactive:hover {
+  cursor: pointer;
+}
