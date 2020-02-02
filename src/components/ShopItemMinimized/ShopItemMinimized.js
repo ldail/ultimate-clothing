@@ -1,12 +1,12 @@
 import React from 'react';
+import './ShopItemMinimized.css';
 
 const ShopItemMinimized = ({collectionInfo: {name, quantity, price, imageUrl}}) => {
   return (
-    <div>
+    <div className="ShopItemMinimized">
       <img src={imageUrl} alt="cart item" />
       <div className="itemInfo">
-        <span className="title">{name}</span>
-        <span className="quantityAndPrice">{quantity} x {price}</span>
+        <span className="quantityAndPrice">{quantity} x ${price}</span>
       </div>
     </div>
   );

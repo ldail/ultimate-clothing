@@ -1,0 +1,133 @@
+#Dropdown {
+  width: 60%;
+  position: fixed;
+  top: 30px;
+  right: 200px;
+  z-index: 7;
+  border: 1px solid black;
+  height: 95vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  max-width: 500px;
+}
+
+#Dropdown button {
+  margin-top: 10px;
+}
+
+#Dropdown button:hover {
+  background-color: black;
+  border: 2px solid white;
+  color: white;
+}
+
+#Dropdown button:hover a {
+  color: white;
+}
+
+#Dropdown .cart {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  overflow: scroll;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 10px;
+}
+
+
+.shownDropdown {
+  animation: forwards;
+  -webkit-animation: forwards;
+  animation-name: 'slideInDropdown';
+  -webkit-animation-name: 'slideInDropdown';
+  animation-duration: .3s;
+  -webkit-animation-duration: .3s;
+  /* animation-play-state: inherit; */
+}
+
+.hiddenDropdown {
+  animation: forwards;
+  -webkit-animation: forwards;
+  animation-name: 'slideOutDropdown';
+  -webkit-animation-name: 'slideOutDropdown';
+  animation-duration: .3s;
+  -webkit-animation-duration: .3s;
+  /* animation-play-state: inherit; */
+}
+
+@keyframes slideInDropdown {
+  from {
+    right: -60%;
+  }
+  to {
+    right: 0px;
+  }
+}
+
+@-webkit-keyframes slideInDropdown {
+  from {
+    right: -60%;
+  }
+  to {
+    right: 0px;
+  }
+}
+
+@keyframes slideOutDropdown {
+  from {
+    right: 0px
+  }
+  to {
+    right: -60%;
+  }
+}
+
+@-webkit-keyframes slideOutDropdown {
+  from {
+    right: 0px
+  }
+  to {
+    right: -60%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  @keyframes slideInDropdown {
+    from {
+      left: -60%;
+    }
+    to {
+      left: 0px;
+    }
+  }
+  
+  @-webkit-keyframes slideInDropdown {
+    from {
+      left: -60%;
+    }
+    to {
+      left: 0px;
+    }
+  }
+  
+  @keyframes slideOutDropdown {
+    from {
+      left: 0px
+    }
+    to {
+      left: -60%;
+    }
+  }
+  
+  @-webkit-keyframes slideOutDropdown {
+    from {
+      left: 0px
+    }
+    to {
+      left: -60%;
+    }
+  }
+}

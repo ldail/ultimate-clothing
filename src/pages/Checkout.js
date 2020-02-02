@@ -30,7 +30,7 @@ const Checkout = ({cartItems}) => {
       <span className="total">${total}</span>
       <p>*Please use the following test credit card for payments*</p>
 
-      <p>4242 4242 4242 4242 - exp: 01/20 - CVV: 123</p>
+      <p>4242 4242 4242 4242 - exp: 02/20 - CVV: 123</p>
       <StripButtonCheckout price={total}/>
     </main>
   );

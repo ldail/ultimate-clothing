@@ -63,7 +63,7 @@ function App({setUser, addItems, sidebarHidden, dropdownHidden}) {
   return (
     <div className="App">
       <Sidebar />
-      {dropdownHidden === true ? '' : <Dropdown />}
+      <Dropdown />
       <Header />
       <Switch>
         <Route exact path="/" component={ShopMain} />

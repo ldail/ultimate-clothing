@@ -6,6 +6,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 30px;
+  max-width: 180px;
 }
 
 .ShopItem button {

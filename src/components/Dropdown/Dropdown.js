@@ -4,20 +4,21 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import './Dropdown.css';
 
-const Dropdown = ({cartItems}) => {
+const Dropdown = ({cartItems, dropdownHidden}) => {
   return (
-    <div id="Dropdown">
+    <div id="Dropdown" className={dropdownHidden ? 'hiddenDropdown' : 'shownDropdown'}>
+      <button className="shop"><Link to="/checkout">GO TO CHECKOUT</Link></button>
       <div className="cart">
         {cartItems.map((item,index)=> {
           return <ShopItemMinimized key={index} collectionInfo={item} />
         })}
       </div>
-      <button className="shop"><Link to="/checkout">GO TO CHECKOUT</Link></button>
     </div>
   );
 };
 
 const mapStateToProps = state => ({
-  cartItems: state.cart.cartItems
+  cartItems: state.cart.cartItems,
+  dropdownHidden: state.navigation.dropdownHidden
 })
 export default connect(mapStateToProps, null)(Dropdown);
