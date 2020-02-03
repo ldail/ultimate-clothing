@@ -15,7 +15,6 @@ import Footer from './components/Footer/Footer';
 import CollectionPage from './pages/CollectionPage/CollectionPage';
 import ShopCollectionsPage from './pages/ShopCollectionsPage/ShopCollectionsPage';
 import SignIn from './pages/SignIn';
-import {auth, createUserProfileDocument, firestore} from './firebase/firebase.utils'
 import { addItems, fetchCollectionsStart } from './redux/collections/collections-actions';
 import Checkout from './pages/Checkout/Checkout';
 import Dropdown from './components/Dropdown/Dropdown';
@@ -31,6 +30,7 @@ function App({setUser, addItems, sidebarHidden, dropdownHidden, checkUser, fetch
 
   useEffect(() => {
     fetchCollectionsStart();
+    checkUser();
   }, []);
 
   return (
