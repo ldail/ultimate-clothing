@@ -9,7 +9,7 @@ import {createStructuredSelector} from 'reselect';
 import {checkUser} from './redux/user/user-actions';
 
 //Components & Pages
-import Header from './components/Header/Header';
+import Header from './components/Header/header';
 import Footer from './components/Footer/Footer';
 import { addItems, fetchCollectionsStart } from './redux/collections/collections-actions';
 import Dropdown from './components/Dropdown/Dropdown';
