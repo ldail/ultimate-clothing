@@ -1,5 +1,5 @@
 const config = ({
-  stripeLocation: 'http://localhost:8000/payment'
+  stripeLocation: 'https://peaceful-badlands-12923.herokuapp.com/payment'
 })
 
 
