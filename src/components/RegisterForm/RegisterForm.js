@@ -3,6 +3,7 @@ import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { registerStart } from '../../redux/user/user-actions';
+import './RegisterForm.css';
 
 
 const RegisterForm = ({signIn, history, register}) => {

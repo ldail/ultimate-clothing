@@ -1,0 +1,20 @@
+#SignIn {
+  display: flex;
+  flex-direction: column;
+}
+
+#SignIn .signInForms {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+@media screen and (min-width: 968px) {
+  #SignIn .signInForms {
+    flex-direction: row;
+  }
+
+  #SignIn .signInForms > * {
+    width: 50%;
+  }
+} 

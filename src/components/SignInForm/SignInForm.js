@@ -3,6 +3,7 @@ import {signInWithGoogle, auth} from '../../firebase/firebase.utils'
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {googleSignInStart, emailSignInStart} from '../../redux/user/user-actions'
+import './SignInForm.css';
 
 const SignInForm = ({history, googleSignInStart, emailSignInStart}) => {
 

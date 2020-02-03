@@ -1,0 +1,31 @@
+#register {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  text-align: center;
+  max-width: 468px;
+  margin: 0 auto;
+  flex: 1;
+}
+
+#register legend {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+#register > * {
+  margin-bottom: 5px;
+}
+
+#register input {
+  font-weight: 200;
+}
+
+#register button {
+  padding: 5px;
+}
+
+#register button {
+  border: 2px solid black;
+  cursor: pointer;
+}
