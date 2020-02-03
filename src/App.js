@@ -1,5 +1,5 @@
 //Dependencies
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, lazy, Suspense} from 'react';
 import {Route, Switch} from 'react-router-dom';
 
 //Redux
@@ -10,23 +10,24 @@ import {checkUser} from './redux/user/user-actions';
 
 //Components & Pages
 import Header from './components/Header/Header';
-import ShopMain from './pages/ShopMain/ShopMain';
 import Footer from './components/Footer/Footer';
-import CollectionPage from './pages/CollectionPage/CollectionPage';
-import ShopCollectionsPage from './pages/ShopCollectionsPage/ShopCollectionsPage';
-import SignIn from './pages/SignIn/SignIn';
 import { addItems, fetchCollectionsStart } from './redux/collections/collections-actions';
-import Checkout from './pages/Checkout/Checkout';
 import Dropdown from './components/Dropdown/Dropdown';
 import Sidebar from './components/Sidebar/Sidebar';
 
 //Styling
 import './App.css';
 import { sidebarSelector, dropdownSelector } from './redux/navigation/navigation-selector';
+import Spinner from './components/Spinner/Spinner';
 
 
 function App({setUser, addItems, sidebarHidden, dropdownHidden, checkUser, fetchCollectionsStart}) {
 
+  const ShopMain = lazy(() => import('./pages/ShopMain/ShopMain'));
+  const ShopCollectionsPage = lazy(() => import('./pages/ShopCollectionsPage/ShopCollectionsPage'));
+  const CollectionPage = lazy(() => import('./pages/CollectionPage/CollectionPage'));
+  const SignIn = lazy(() => import('./pages/SignIn/SignIn'));
+  const Checkout = lazy(() => import('./pages/Checkout/Checkout'));
 
   useEffect(() => {
     fetchCollectionsStart();
@@ -39,11 +40,13 @@ function App({setUser, addItems, sidebarHidden, dropdownHidden, checkUser, fetch
       <Dropdown />
       <Header />
       <Switch>
-        <Route exact path="/" component={ShopMain} />
-        <Route exact path="/shop" component={ShopCollectionsPage} />
-        <Route path="/shop/:id" component={CollectionPage} />
-        <Route path="/signin" component={SignIn} />
-        <Route path="/checkout" component={Checkout} />
+        <Suspense fallback={Spinner}>
+          <Route exact path="/" component={ShopMain} />
+          <Route exact path="/shop" component={ShopCollectionsPage} />
+          <Route path="/shop/:id" component={CollectionPage} />
+          <Route path="/signin" component={SignIn} />
+          <Route path="/checkout" component={Checkout} />
+        </Suspense>
       </Switch>
       <Footer />
     </div>
