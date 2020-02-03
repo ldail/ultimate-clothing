@@ -1,7 +1,8 @@
 import { collectionTypes } from "./collections-types"
 
 const INITIAL_STATE = ({
-  items: []
+  items: [],
+  error: false
 })
 
 const collectionsReducer = (state = INITIAL_STATE, action) => {
@@ -10,6 +11,17 @@ const collectionsReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         items: action.payload
+      }
+    case collectionTypes.GET_COLLECTION_FAILURE:
+      return {
+        ...state,
+        error: action.payload
+      }
+    case collectionTypes.GET_COLLECTION_SUCCESS:
+      return {
+        ...state,
+        items: action.payload,
+        error: false
       }
     default:
       return state;

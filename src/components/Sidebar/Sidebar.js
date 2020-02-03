@@ -3,6 +3,10 @@ import {connect} from 'react-redux';
 import {dropdownHiddenToggle} from '../../redux/navigation/navigation-actions'
 import {Link} from 'react-router-dom';
 import './Sidebar.css';
+import { createStructuredSelector } from 'reselect';
+import { userSelector } from '../../redux/user/user-selector';
+import { sidebarSelector } from '../../redux/navigation/navigation-selector';
+import { cartItemsSelector } from '../../redux/cart/cart-selector';
 
 const Sidebar = ({user, sidebarHidden, dropdownHiddenToggle, cartItems}) => {
   let totalItemCount = 0;
@@ -24,10 +28,10 @@ const Sidebar = ({user, sidebarHidden, dropdownHiddenToggle, cartItems}) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  user: state.user,
-  sidebarHidden: state.navigation.sidebarHidden,
-  cartItems: state.cart.cartItems
+const mapStateToProps = createStructuredSelector({
+  user: userSelector,
+  sidebarHidden: sidebarSelector,
+  cartItems: cartItemsSelector
 })
 
 const mapDispatchToProps = (dispatch) => ({

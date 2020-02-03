@@ -3,6 +3,8 @@ import ShopItem from '../../components/ShopItem/ShopItem';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import './ShopCollectionsPage.css';
+import { createStructuredSelector } from 'reselect';
+import { itemsSelector } from '../../redux/collections/collections-selector';
 
 const ShopCollectionsPage = ({collections}) => {
 
@@ -31,8 +33,8 @@ const ShopCollectionsPage = ({collections}) => {
   );
 };
 
-const mapStateToProps = state => ({
-  collections: state.collections.items
+const mapStateToProps = createStructuredSelector({
+  collections: itemsSelector
 })
 
 export default connect(mapStateToProps, null)(ShopCollectionsPage);

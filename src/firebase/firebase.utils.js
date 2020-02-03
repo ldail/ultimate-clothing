@@ -32,7 +32,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   return userRef;
 }
 
-const provider = new firebase.auth.GoogleAuthProvider();
+export const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({prompt: 'select_account'});
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 

@@ -5,6 +5,8 @@ import {Route, Switch} from 'react-router-dom';
 //Redux
 import {connect} from 'react-redux';
 import {signIn} from './redux/user/user-actions'
+import {createStructuredSelector} from 'reselect';
+import {checkUser} from './redux/user/user-actions';
 
 //Components & Pages
 import Header from './components/Header/Header';
@@ -14,50 +16,21 @@ import CollectionPage from './pages/CollectionPage/CollectionPage';
 import ShopCollectionsPage from './pages/ShopCollectionsPage/ShopCollectionsPage';
 import SignIn from './pages/SignIn';
 import {auth, createUserProfileDocument, firestore} from './firebase/firebase.utils'
-import { addItems } from './redux/collections/collections-actions';
+import { addItems, fetchCollectionsStart } from './redux/collections/collections-actions';
 import Checkout from './pages/Checkout/Checkout';
 import Dropdown from './components/Dropdown/Dropdown';
 import Sidebar from './components/Sidebar/Sidebar';
 
 //Styling
 import './App.css';
+import { sidebarSelector, dropdownSelector } from './redux/navigation/navigation-selector';
 
 
-function App({setUser, addItems, sidebarHidden, dropdownHidden}) {
+function App({setUser, addItems, sidebarHidden, dropdownHidden, checkUser, fetchCollectionsStart}) {
 
-  let unsubscribeFromAuth = null;
-  let unsubscribeFromCollections = null;
 
   useEffect(() => {
-    unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-
-      if (userAuth) {
-      const userRef = await createUserProfileDocument(userAuth);
-
-      userRef.onSnapshot(snapshot => {
-        setUser({
-          id: snapshot.id,
-          ...snapshot.data()
-        });
-      });
-    }
-    })
-
-    const collectionRef = firestore.collection('collections');
-    unsubscribeFromCollections = collectionRef.onSnapshot(snapshot => {
-      let collectionNames = snapshot.docs;
-      let mappedCollectionData = [];
-      collectionNames.forEach(doc => {
-        mappedCollectionData.push(doc.data());
-      });
-
-      addItems(mappedCollectionData)
-    })
-
-    return () => {
-      unsubscribeFromAuth();
-      unsubscribeFromCollections();
-    }
+    fetchCollectionsStart();
   }, []);
 
   return (
@@ -77,13 +50,15 @@ function App({setUser, addItems, sidebarHidden, dropdownHidden}) {
   );
 }
 
-const mapStateToProps = state => ({
-  sidebarHidden: state.navigation.sidebarHidden,
-  dropdownHidden: state.navigation.dropdownHidden
+const mapStateToProps = createStructuredSelector({
+  sidebarHidden: sidebarSelector,
+  dropdownHidden: dropdownSelector
 })
 const mapDispatchToProps = dispatch => ({
   setUser: (user) => dispatch(signIn(user)),
-  addItems: (items) => dispatch(addItems(items))
+  addItems: (items) => dispatch(addItems(items)),
+  checkUser: () => dispatch(checkUser()),
+  fetchCollectionsStart: () => dispatch(fetchCollectionsStart())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

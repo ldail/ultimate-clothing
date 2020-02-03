@@ -9,6 +9,9 @@ import './Header.css';
 
 //Assets
 import CartIcon from '../../assets/Cart';
+import { createStructuredSelector } from 'reselect';
+import { userSelector } from '../../redux/user/user-selector';
+import { cartItemsSelector } from '../../redux/cart/cart-selector';
 
 const Header = ({sidebarHiddenToggle, dropdownHiddenToggle, user, cartItems}) => {
 
@@ -49,9 +52,9 @@ const Header = ({sidebarHiddenToggle, dropdownHiddenToggle, user, cartItems}) =>
   );
 };
 
-const mapStateToProps = (state) => ({
-  user: state.user,
-  cartItems: state.cart.cartItems
+const mapStateToProps = createStructuredSelector({
+  user: userSelector,
+  cartItems: cartItemsSelector
 })
 
 const mapDispatchToProps = dispatch => ({

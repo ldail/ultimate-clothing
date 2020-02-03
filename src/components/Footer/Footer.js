@@ -2,6 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import './Footer.css';
+import { createStructuredSelector } from 'reselect';
+import { userSelector } from '../../redux/user/user-selector';
 
 const Footer = ({user}) => {
   return (
@@ -53,8 +55,8 @@ const Footer = ({user}) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  user: state.user
+const mapStateToProps = createStructuredSelector({
+  user: userSelector
 })
 
 export default connect(mapStateToProps, null)(Footer);

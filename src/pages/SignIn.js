@@ -2,8 +2,13 @@ import React from 'react';
 
 import SignInForm from '../components/SignInForm/SignInForm';
 import RegisterForm from '../components/RegisterForm/RegisterForm';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { userSelector } from '../redux/user/user-selector';
+import { withRouter } from 'react-router-dom';
 
-const SignIn = () => {
+const SignIn = ({user, history}) => {
+  if (user) history.push('/');
   return (
     <main id="SignIn">
       <section>
@@ -16,4 +21,8 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+const mapStateToProps = createStructuredSelector({
+  user: userSelector
+})
+
+export default withRouter(connect(mapStateToProps,null)(SignIn));

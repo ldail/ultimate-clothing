@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import {signInWithGoogle, auth} from '../../firebase/firebase.utils'
 import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {googleSignInStart, emailSignInStart} from '../../redux/user/user-actions'
 
-const SignInForm = ({history}) => {
+const SignInForm = ({history, googleSignInStart, emailSignInStart}) => {
 
   let [error, setError] = useState(null);
   let [userInfo, setUserInfo] = useState({email: '', password: ''})
@@ -11,8 +13,7 @@ const SignInForm = ({history}) => {
     e.preventDefault();
     let {email, password} = userInfo;
     try {
-      const {user} = await auth.signInWithEmailAndPassword(email,password);
-      history.push('/');
+      emailSignInStart(email, password)
 
     }
     catch (error) {
@@ -33,12 +34,16 @@ const SignInForm = ({history}) => {
       <input type="password" name="password" id="password" onChange={(e) => handleChange(e)} value={userInfo.password} required />
       <button type="submit" className="shop">Sign In</button>
       <button type="button" className="shopInverted" onClick={async () => {
-        await signInWithGoogle();
-        history.push('/');
+        await googleSignInStart();
       }}>Sign In With Google</button>
     </form>
   );
 };
 
+const mapDispatchToProps = dispatch => ({
+  googleSignInStart: () => dispatch(googleSignInStart()),
+  emailSignInStart: (email, password) => dispatch(emailSignInStart(email, password))
+})
 
-export default withRouter(SignInForm);
+
+export default withRouter(connect(null, mapDispatchToProps)(SignInForm));

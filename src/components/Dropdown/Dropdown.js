@@ -4,6 +4,9 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import './Dropdown.css';
 import {hideDropdownAndSidebar} from '../../redux/navigation/navigation-actions';
+import { cartItemsSelector } from '../../redux/cart/cart-selector';
+import { dropdownSelector } from '../../redux/navigation/navigation-selector';
+import { createStructuredSelector } from 'reselect';
 
 const Dropdown = ({cartItems, dropdownHidden, hideDropdownAndSidebar}) => {
   return (
@@ -18,9 +21,9 @@ const Dropdown = ({cartItems, dropdownHidden, hideDropdownAndSidebar}) => {
   );
 };
 
-const mapStateToProps = state => ({
-  cartItems: state.cart.cartItems,
-  dropdownHidden: state.navigation.dropdownHidden
+const mapStateToProps = createStructuredSelector({
+  cartItems: cartItemsSelector,
+  dropdownHidden: dropdownSelector
 })
 
 const mapDispatchToProps = dispatch => ({
