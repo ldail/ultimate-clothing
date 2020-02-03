@@ -1,5 +1,5 @@
 //Dependencies
-import React, {useEffect, useState, lazy, Suspense} from 'react';
+import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 
 //Redux
