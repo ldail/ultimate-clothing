@@ -12,8 +12,9 @@ const SignInForm = ({history, googleSignInStart, emailSignInStart}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let {email, password} = userInfo;
+    console.log(email, ' ', password);
     try {
-      emailSignInStart(email, password)
+      emailSignInStart({email, password})
 
     }
     catch (error) {

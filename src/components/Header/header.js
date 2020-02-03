@@ -12,8 +12,9 @@ import CartIcon from '../../assets/Cart';
 import { createStructuredSelector } from 'reselect';
 import { userSelector } from '../../redux/user/user-selector';
 import { cartItemsSelector } from '../../redux/cart/cart-selector';
+import { signOutStart } from '../../redux/user/user-actions';
 
-const Header = ({sidebarHiddenToggle, dropdownHiddenToggle, user, cartItems}) => {
+const Header = ({sidebarHiddenToggle, dropdownHiddenToggle, user, cartItems, signOutStart}) => {
 
   let totalItemCount = 0;
   cartItems.forEach(item => {
@@ -29,7 +30,7 @@ const Header = ({sidebarHiddenToggle, dropdownHiddenToggle, user, cartItems}) =>
 
         <div id="tablet-nav" className="mobile-hidden">
           <ul>
-            <li>{user ? 'SIGN OUT' : 'SIGN IN'}</li>
+            <li>{user ? <Link to="/" onClick={() => signOutStart()}>SIGN OUT</Link> : <Link to="/signin">SIGN IN</Link>}</li>
             <li onClick={() => dropdownHiddenToggle()} ><CartIcon className="cart"/><span className="totalItemCount">{totalItemCount}</span></li>
           </ul>
         </div>
@@ -59,7 +60,8 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = dispatch => ({
   sidebarHiddenToggle: () => dispatch(sidebarHiddenToggle()),
-  dropdownHiddenToggle: () => dispatch(dropdownHiddenToggle())
+  dropdownHiddenToggle: () => dispatch(dropdownHiddenToggle()),
+  signOutStart: () => dispatch(signOutStart())
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(Header);

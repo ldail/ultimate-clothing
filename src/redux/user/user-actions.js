@@ -5,8 +5,17 @@ export const signIn = (user) => ({
   payload: user
 })
 
-export const signOut = () => ({
-  type: userTypes.SIGN_OUT
+export const signOutStart = () => ({
+  type: userTypes.SIGN_OUT_START
+})
+
+export const signOutSuccess = () => ({
+  type: userTypes.SIGN_OUT_SUCCESS
+})
+
+export const signOutFailure = (error) => ({
+  type: userTypes.SIGN_OUT_FAILURE,
+  payload: error
 })
 
 export const checkUser = () => ({
@@ -27,8 +36,9 @@ export const googleSignInFailure = error => ({
   payload: error
 })
 
-export const emailSignInStart = () => ({
-  type: userTypes.EMAIL_SIGN_IN_START
+export const emailSignInStart = (user) => ({
+  type: userTypes.EMAIL_SIGN_IN_START,
+  payload: user
 })
 
 export const emailSignInSuccess = (user) => ({
@@ -38,5 +48,20 @@ export const emailSignInSuccess = (user) => ({
 
 export const emailSignInFailure = error => ({
   type: userTypes.EMAIL_SIGN_IN_FAILURE,
+  payload: error
+})
+
+export const registerStart = (user) => ({
+  type: userTypes.REGISTER_START,
+  payload: user
+})
+
+export const registerSuccess = (user) => ({
+  type: userTypes.REGISTER_SUCCESS,
+  payload: user
+})
+
+export const registerFailure = error => ({
+  type: userTypes.REGISTER_FAILURE,
   payload: error
 })

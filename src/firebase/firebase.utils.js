@@ -12,7 +12,6 @@ export const firestore = firebase.firestore();
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
   const {displayName, email, uid} = userAuth;
-  console.log(uid);
 
   const userRef = firestore.doc(`users/${uid}`);
   const snapShot = await userRef.get();
@@ -51,5 +50,13 @@ export const addDocumentsToCollection = async (collectionKey, objectsToAdd) => {
   await batch.commit();
 }
 
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged(userAuth => {
+      unsubscribe();
+      resolve(userAuth);
+    },reject)
+  })
+}
 
 export default firebase;

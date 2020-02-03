@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 import {withRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { registerStart } from '../../redux/user/user-actions';
 
 
-const RegisterForm = ({signIn, history}) => {
+const RegisterForm = ({signIn, history, register}) => {
 
   let [userInfo, setUserInfo] = useState({
     displayName: null,
@@ -26,25 +28,11 @@ const RegisterForm = ({signIn, history}) => {
 
     if (!error) {
       try {
-        const {user} = await auth.createUserWithEmailAndPassword(email, password);
-        await createUserProfileDocument(user, {displayName});
-        setUserInfo = {
-          displayName: null,
-          password: null,
-          confirmPassword: null,
-          username: null,
-          email: null,
-          confirmEmail: null
-        }
-        history.push('/');
-
-      
-
-
-
+        register(userInfo);
+  
       }catch (error) {
         console.error(error);
-        setError(`Error in backend registering. Try again. ${error.message}`);
+        setError(`Error in registering. Try again. ${error.message}`);
       }
     }
   }
@@ -75,4 +63,8 @@ const RegisterForm = ({signIn, history}) => {
   );
 };
 
-export default withRouter(RegisterForm);
+const mapDispatchToProps = dispatch => ({
+  register: (userInfo) => dispatch(registerStart(userInfo))
+})
+
+export default withRouter(connect(null,mapDispatchToProps)(RegisterForm));
