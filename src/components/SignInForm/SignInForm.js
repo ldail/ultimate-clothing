@@ -1,26 +1,23 @@
 import React, { useState } from 'react';
-import {signInWithGoogle, auth} from '../../firebase/firebase.utils'
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {googleSignInStart, emailSignInStart} from '../../redux/user/user-actions'
 import './SignInForm.css';
+import { createStructuredSelector } from 'reselect';
+import { checkUserErrorSelector } from '../../redux/user/user-selector';
 
-const SignInForm = ({history, googleSignInStart, emailSignInStart}) => {
+const SignInForm = ({history, googleSignInStart, emailSignInStart, checkUserError}) => {
 
-  let [error, setError] = useState(null);
   let [userInfo, setUserInfo] = useState({email: '', password: ''})
+
+  let {form} = checkUserError;
+
+  console.log(checkUserError);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     let {email, password} = userInfo;
-    console.log(email, ' ', password);
-    try {
-      emailSignInStart({email, password})
-
-    }
-    catch (error) {
-      setError(error);
-    }
+    emailSignInStart({email, password})
   }
 
   const handleChange = async (e) => {
@@ -29,7 +26,7 @@ const SignInForm = ({history, googleSignInStart, emailSignInStart}) => {
   return (
     <form id="signIn" onSubmit={(e) => handleSubmit(e)}>
       <legend>Sign In</legend>
-      {error ? <h3>Could not login: {error.message}</h3> : ''}
+      {form === 'SignIn' ? <h3>Could not login: {checkUserError?.error?.message}</h3> : ''}
       <label htmlFor="email">email</label>
       <input type="text" name="email" id="email" onChange={(e) => handleChange(e)} value={userInfo.email} required />
       <label htmlFor="password">password</label>
@@ -42,10 +39,14 @@ const SignInForm = ({history, googleSignInStart, emailSignInStart}) => {
   );
 };
 
+const mapStateToProps = createStructuredSelector({
+  checkUserError: checkUserErrorSelector
+})
+
 const mapDispatchToProps = dispatch => ({
   googleSignInStart: () => dispatch(googleSignInStart()),
   emailSignInStart: (email, password) => dispatch(emailSignInStart(email, password))
 })
 
 
-export default withRouter(connect(null, mapDispatchToProps)(SignInForm));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignInForm));

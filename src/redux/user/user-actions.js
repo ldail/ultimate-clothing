@@ -33,7 +33,7 @@ export const googleSignInSuccess = (user) => ({
 
 export const googleSignInFailure = error => ({
   type: userTypes.GOOGLE_SIGN_IN_FAILURE,
-  payload: error
+  payload: {form: 'SignIn', error}
 })
 
 export const emailSignInStart = (user) => ({
@@ -48,7 +48,7 @@ export const emailSignInSuccess = (user) => ({
 
 export const emailSignInFailure = error => ({
   type: userTypes.EMAIL_SIGN_IN_FAILURE,
-  payload: error
+  payload: {form: 'SignIn', error}
 })
 
 export const registerStart = (user) => ({
@@ -63,5 +63,5 @@ export const registerSuccess = (user) => ({
 
 export const registerFailure = error => ({
   type: userTypes.REGISTER_FAILURE,
-  payload: error
+  payload: {form: 'Register', error}
 })

@@ -4,9 +4,11 @@ import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { registerStart } from '../../redux/user/user-actions';
 import './RegisterForm.css';
+import { createStructuredSelector } from 'reselect';
+import { checkUserErrorSelector } from '../../redux/user/user-selector';
 
 
-const RegisterForm = ({signIn, history, register}) => {
+const RegisterForm = ({signIn, history, register, checkUserError}) => {
 
   let [userInfo, setUserInfo] = useState({
     displayName: null,
@@ -18,6 +20,7 @@ const RegisterForm = ({signIn, history, register}) => {
   });
   const [error, setError] = useState(false);
 
+  let {form} = checkUserError;
 
   const handleSubmit = async (e) => {
     let {password, confirmPassword, email, confirmEmail, displayName} = userInfo;
@@ -46,7 +49,7 @@ const RegisterForm = ({signIn, history, register}) => {
   return (
     <form id="register" onSubmit={(e) => handleSubmit(e)}>
       <legend>Register</legend>
-      {error ? <h3>Could not submit: {error}</h3> : ''}
+      {form === 'Register' ? <h3>Could not submit: {checkUserError?.error?.message}</h3> : ''}
       <label htmlFor="displayName">display name</label>
       <input type="text" name="displayName" id="displayName" onChange={(e) => {handleChange(e)}} value={userInfo.displayName} required/>
       <label htmlFor="username">username</label>
@@ -64,8 +67,12 @@ const RegisterForm = ({signIn, history, register}) => {
   );
 };
 
+const mapStateToProps = createStructuredSelector({
+  checkUserError: checkUserErrorSelector
+})
+
 const mapDispatchToProps = dispatch => ({
   register: (userInfo) => dispatch(registerStart(userInfo))
 })
 
-export default withRouter(connect(null,mapDispatchToProps)(RegisterForm));
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(RegisterForm));
