@@ -29,7 +29,7 @@ const ShopMain = ({history}) => {
           <h2>HAND-CRAFTED LUXURY </h2>
           <h3>made by world-class designers</h3>
 
-          <div class="tablet-flex">
+          <div className="tablet-flex">
             <div className="shopFeature jackets">
               <button className="shopInverted" onClick={() => history.push('/shop/jackets')}>SHOP JACKETS</button>
             </div>

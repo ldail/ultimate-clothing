@@ -8,6 +8,7 @@ import { userSelector } from '../../redux/user/user-selector';
 import { sidebarSelector } from '../../redux/navigation/navigation-selector';
 import { cartItemsSelector } from '../../redux/cart/cart-selector';
 import { signOutStart } from '../../redux/user/user-actions';
+import CloseSidebarAndDropdownLink from '../CloseSidebarAndDropdownLink';
 
 const Sidebar = ({user, sidebarHidden, dropdownHiddenToggle, cartItems, signOutStart}) => {
   let totalItemCount = 0;
@@ -17,14 +18,14 @@ const Sidebar = ({user, sidebarHidden, dropdownHiddenToggle, cartItems, signOutS
 
   return (
     <ul id="Sidebar" className={sidebarHidden ? 'hiddenSidebar' : 'shownSidebar'}>
-      <li>{user ? <Link to="/" onClick={() => signOutStart()}>SIGN OUT</Link> : <Link to="/signin">SIGN IN</Link>}</li>
+      <li>{user ? <CloseSidebarAndDropdownLink to="/" onClick={signOutStart}>SIGN OUT</CloseSidebarAndDropdownLink> : <CloseSidebarAndDropdownLink to="/signin">SIGN IN</CloseSidebarAndDropdownLink>}</li>
       <li onClick={() => dropdownHiddenToggle()}>{`CART (${totalItemCount})`}</li>
-      <li className="break"><Link to="/shop">SHOP</Link></li>
-      <li className="break"><Link to="/shop/mens">MEN'S</Link></li>
-      <li><Link to="/shop/womens">WOMEN'S</Link></li>
-      <li><Link to="/shop/jackets">JACKETS</Link></li>
-      <li><Link to="/shop/sneakers">SNEAKERS</Link></li>
-      <li><Link to="/shop/hats">HATS</Link></li>
+      <li className="break"><CloseSidebarAndDropdownLink to="/shop">SHOP</CloseSidebarAndDropdownLink></li>
+      <li className="break"><CloseSidebarAndDropdownLink to="/shop/mens">MEN'S</CloseSidebarAndDropdownLink></li>
+      <li><CloseSidebarAndDropdownLink to="/shop/womens">WOMEN'S</CloseSidebarAndDropdownLink></li>
+      <li><CloseSidebarAndDropdownLink to="/shop/jackets">JACKETS</CloseSidebarAndDropdownLink></li>
+      <li><CloseSidebarAndDropdownLink to="/shop/sneakers">SNEAKERS</CloseSidebarAndDropdownLink></li>
+      <li><CloseSidebarAndDropdownLink to="/shop/hats">HATS</CloseSidebarAndDropdownLink></li>
     </ul>
   );
 };

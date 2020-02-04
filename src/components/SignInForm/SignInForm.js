@@ -12,8 +12,6 @@ const SignInForm = ({history, googleSignInStart, emailSignInStart, checkUserErro
 
   let {form} = checkUserError;
 
-  console.log(checkUserError);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     let {email, password} = userInfo;

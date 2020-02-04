@@ -1,7 +1,7 @@
 import React from 'react';
 import {sidebarHiddenToggle, dropdownHiddenToggle} from '../../redux/navigation/navigation-actions'
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+import {LinkScrollToTop as Link} from '../LinkScrollToTop';
 import HamburgerMenu from '../../assets/HamburgerMenu';
 
 //Styling
