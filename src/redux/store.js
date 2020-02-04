@@ -10,7 +10,9 @@ const middlewares = [];
 const sagaMiddlewares = createSagaMiddleware();
 middlewares.push(sagaMiddlewares);
 middlewares.push(logger)
-export const store = createStore(rootReducer, compose(applyMiddleware(...middlewares), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+// export const store = createStore(rootReducer, compose(applyMiddleware(...middlewares), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+
+export const store = createStore(rootReducer, applyMiddleware(...middlewares));
 
 sagaMiddlewares.run(rootSaga);
 
