@@ -7,8 +7,9 @@ import { createStructuredSelector } from 'reselect';
 import { userSelector } from '../../redux/user/user-selector';
 import { sidebarSelector } from '../../redux/navigation/navigation-selector';
 import { cartItemsSelector } from '../../redux/cart/cart-selector';
+import { signOutStart } from '../../redux/user/user-actions';
 
-const Sidebar = ({user, sidebarHidden, dropdownHiddenToggle, cartItems}) => {
+const Sidebar = ({user, sidebarHidden, dropdownHiddenToggle, cartItems, signOutStart}) => {
   let totalItemCount = 0;
   cartItems.forEach(item => {
     totalItemCount += item.quantity
@@ -16,7 +17,7 @@ const Sidebar = ({user, sidebarHidden, dropdownHiddenToggle, cartItems}) => {
 
   return (
     <ul id="Sidebar" className={sidebarHidden ? 'hiddenSidebar' : 'shownSidebar'}>
-      <li>{user ? 'SIGN OUT' : 'SIGN IN'}</li>
+      <li>{user ? <Link to="/" onClick={() => signOutStart()}>SIGN OUT</Link> : <Link to="/signin">SIGN IN</Link>}</li>
       <li onClick={() => dropdownHiddenToggle()}>{`CART (${totalItemCount})`}</li>
       <li className="break"><Link to="/shop">SHOP</Link></li>
       <li className="break"><Link to="/shop/mens">MEN'S</Link></li>
@@ -35,7 +36,8 @@ const mapStateToProps = createStructuredSelector({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  dropdownHiddenToggle: () => dispatch(dropdownHiddenToggle())
+  dropdownHiddenToggle: () => dispatch(dropdownHiddenToggle()),
+  signOutStart: () => dispatch(signOutStart())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
