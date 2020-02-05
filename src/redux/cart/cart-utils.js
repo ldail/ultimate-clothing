@@ -1,6 +1,4 @@
 export const increaseQuantity = (state, addItem) => {
-  console.log(state);
-  console.log(addItem);
   let cartItems = [...state.cartItems];
   let find = cartItems.find(item => item.id === addItem.id);
   if (find) {

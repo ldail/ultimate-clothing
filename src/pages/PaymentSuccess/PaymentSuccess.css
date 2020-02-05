@@ -1,0 +1,13 @@
+#ShopCollectionsPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+#ShopCollectionsPage h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 10px;
+}

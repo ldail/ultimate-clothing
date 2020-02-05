@@ -23,7 +23,7 @@ const StripButtonCheckout = ({price, clearCart, setSuccessReceiptSrc, history}) 
       .then(res => res.json())
       .then(resJson => {
         alert('Payment success!');
-        console.log(resJson);
+
         clearCart();
         setSuccessReceiptSrc(resJson.success.receipt_url);
         history.push('/checkout/success')
