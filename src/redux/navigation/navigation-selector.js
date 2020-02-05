@@ -11,3 +11,8 @@ export const sidebarSelector = createSelector(
   selectNavigation,
   navigation => navigation.sidebarHidden
 )
+
+export const successReceiptSelector = createSelector(
+  selectNavigation,
+  navigation => navigation.successReceipt
+)

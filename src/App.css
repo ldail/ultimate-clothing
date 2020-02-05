@@ -57,6 +57,10 @@ main {
   padding-top: 205px;
 }
 
+iframe { 
+  margin: 0 auto;
+}
+
 @media screen and (min-width: 768px) {
   .tablet-hidden {
     display: none;

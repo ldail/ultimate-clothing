@@ -2,7 +2,8 @@ import navigationTypes from "./navigation-types"
 
 const INITIAL_STATE = {
   sidebarHidden: true,
-  dropdownHidden: true
+  dropdownHidden: true,
+  successReceipt: null
 }
 
 const navigationReducer = (state=INITIAL_STATE,action) => {
@@ -27,6 +28,11 @@ const navigationReducer = (state=INITIAL_STATE,action) => {
           ...state,
           dropdownHidden: true,
           sidebarHidden: true
+        }
+      case navigationTypes.SET_SUCCESS_RECEIPT_SRC:
+        return {
+          ...state,
+          successReceipt: action.payload
         }
     default:
       return state;

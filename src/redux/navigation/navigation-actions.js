@@ -11,3 +11,8 @@ export const dropdownHiddenToggle = () => ({
 export const hideDropdownAndSidebar =() => ({
   type: navigationTypes.HIDE_DROPDOWN_AND_SIDEBAR
 })
+
+export const setSuccessReceipt = (src) => ({
+  type: navigationTypes.SET_SUCCESS_RECEIPT_SRC,
+  payload: src
+})

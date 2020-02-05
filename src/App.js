@@ -19,6 +19,7 @@ import Sidebar from './components/Sidebar/Sidebar';
 import './App.css';
 import { sidebarSelector, dropdownSelector } from './redux/navigation/navigation-selector';
 import Spinner from './components/Spinner/Spinner';
+import PaymentSuccess from './pages/PaymentSuccess/PaymentSuccess';
 
 
 function App({setUser, addItems, sidebarHidden, dropdownHidden, checkUser, fetchCollectionsStart}) {
@@ -45,7 +46,8 @@ function App({setUser, addItems, sidebarHidden, dropdownHidden, checkUser, fetch
           <Route exact path="/shop" component={ShopCollectionsPage} />
           <Route path="/shop/:id" component={CollectionPage} />
           <Route path="/signin" component={SignIn} />
-          <Route path="/checkout" component={Checkout} />
+          <Route exact path="/checkout" component={Checkout} />
+          <Route path="/checkout/success" component={PaymentSuccess} />
         </Suspense>
       </Switch>
       <Footer />
