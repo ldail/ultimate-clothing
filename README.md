@@ -26,8 +26,13 @@ management and is a fully functioning e-commerce store.
 
 
 ## Technologies
+
+ReactJS is the framework used for the UI. Redux is the state management tool, using Redux Saga for async state management, and Redux Persist for local session storage. The client utilizes Stripe on the front-end for a true payment system called via a backend server running NodeJS and Express. The database is stored through Firebase via Firestore, and the authentication is handled through Firebase auth.
+
 * ReactJS
 * Redux
+* Redux Saga
+* Redux Persist
 * NodeJS
 * Express
 * Stripe
